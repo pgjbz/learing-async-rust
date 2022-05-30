@@ -58,7 +58,7 @@ async fn count() {
     let mut total = 0;
 
     loop {
-        select! {
+        select! { //select dont take a ownership, because of this us can use select inside up
             a = a_fut => total += a,
             b = b_fut => total += b,
             complete => break, //complete branches can be used to handle the case where all futures being selected over have completed and will no longer make progress
